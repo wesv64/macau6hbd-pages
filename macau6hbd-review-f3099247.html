@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门六合 · 信息指引页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: #1e2a3a;
+            padding: 2rem 1.25rem;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #f9fafc 100%);
+            border: 1px solid #e2e6ed;
+            border-radius: 2rem;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.04), 0 6px 12px -4px rgba(0, 0, 0, 0.02);
+            padding: 4rem 2.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #121926;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 1.6rem;
+            font-size: 1.1rem;
+            color: #3b4a5a;
+        }
+
+        .hero .tag-line {
+            display: inline-block;
+            background: #eef0f5;
+            border-radius: 100px;
+            padding: 0.45rem 1.6rem;
+            font-size: 0.9rem;
+            color: #2b3a4b;
+            border: 1px solid #d7dce5;
+            letter-spacing: 0.4px;
+        }
+
+        /* card 通用 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e9ef;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 2.2rem 2.2rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #121926;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e9ef;
+            display: inline-block;
+        }
+
+        /* 优势区 两栏 */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 0.6rem;
+        }
+
+        .advantage-item {
+            background: #fafbfc;
+            border-radius: 1.25rem;
+            padding: 1.6rem 1.4rem;
+            border: 1px solid #eaeef3;
+        }
+
+        .advantage-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.55rem;
+            color: #1f2d3d;
+        }
+
+        .advantage-item p {
+            font-size: 0.96rem;
+            color: #3f4e5d;
+        }
+
+        /* 说明区 + FAQ 摘要并排，但移动端可堆叠 */
+        .info-faq-flex {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .info-faq-flex .card {
+            flex: 1;
+        }
+
+        .faq-list {
+            list-style: none;
+            margin-top: 0.6rem;
+        }
+
+        .faq-list li {
+            padding: 0.65rem 0 0.65rem 1.2rem;
+            border-bottom: 1px solid #eef1f6;
+            position: relative;
+            font-size: 0.98rem;
+            color: #2e3d4b;
+        }
+
+        .faq-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #5e6f80;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-list li strong {
+            font-weight: 500;
+            color: #121926;
+        }
+
+        .text-link {
+            color: #1f3a6b;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .text-link:hover {
+            border-bottom-color: #1f3a6b;
+        }
+
+        /* 底部链接卡片 */
+        .footer-link-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid #e2e6ed;
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .footer-link-area span {
+            font-size: 0.95rem;
+            color: #3b4b5b;
+        }
+
+        .footer-link-area a {
+            color: #121926;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #d0d6e0;
+            border-radius: 40px;
+            background: #f8f9fb;
+            transition: background 0.2s, border-color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .footer-link-area a:hover {
+            background: #eef1f6;
+            border-color: #b6bfcc;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #697a8a;
+            margin-top: 1.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            body { padding: 1.2rem; }
+            .hero { padding: 2.8rem 1.5rem 2.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .advantage-grid { grid-template-columns: 1fr; }
+            .info-faq-flex { flex-direction: column; }
+            .footer-link-area { flex-direction: column; gap: 0.8rem; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.7rem; }
+            .card { padding: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 区 -->
+    <header class="hero">
+        <h1>澳门六合 · 信息入口</h1>
+        <p>一个专注于提供澳门六合资讯与内容索引的稳定页面，帮助浏览者快速了解相关背景及常见疑问。</p>
+        <div class="tag-line">知识型指引 · 持续维护</div>
+    </header>
+
+    <!-- 优势区 -->
+    <section class="card">
+        <h2 class="section-title">平台特点</h2>
+        <div class="advantage-grid">
+            <div class="advantage-item">
+                <h3>结构清晰</h3>
+                <p>分类归纳澳门六合相关内容，从概念说明到常见问题，减少信息过载，方便按需查阅。</p>
+            </div>
+            <div class="advantage-item">
+                <h3>稳定访问</h3>
+                <p>页面托管于 GitHub Pages，配合合理缓存策略，保障基础可访问性，适合长期收藏。</p>
+            </div>
+            <div class="advantage-item">
+                <h3>轻量设计</h3>
+                <p>不使用大型框架，加载迅速，对移动设备友好，在多种屏幕尺寸下均可顺畅阅读。</p>
+            </div>
+            <div class="advantage-item">
+                <h3>持续补充</h3>
+                <p>内容会随资料整理逐步更新，保持信息时效性，同时避免过度承诺或夸大描述。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 + FAQ 摘要 并排 -->
+    <div class="info-faq-flex">
+        <!-- 说明区 -->
+        <section class="card">
+            <h2 class="section-title">关于本页</h2>
+            <p style="margin-bottom: 0.8rem;">本介绍页旨在为希望了解澳门六合的用户提供一个稳定的索引点。页面内容围绕基础知识、访问方式与常见疑问展开，不包含诱导性表述或未经核实的推测。</p>
+            <p>如果你正在寻找一个可以长期参考的澳门六合信息窗口，可以直接通过下方链接访问 <a href="https://macau6hbd.com" class="text-link">澳门六合</a>，该站点为相关内容的主入口。建议将其加入书签，以便日后快速返回。</p>
+            <p style="margin-top: 1rem;">页面整体采用浅灰色背景与柔和卡片分区，降低视觉疲劳，让浏览体验更加舒适。</p>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section class="card">
+            <h2 class="section-title">常见疑问摘要</h2>
+            <ul class="faq-list">
+                <li><strong>澳门六合是什么？</strong> 泛指澳门地区与六合彩相关的资讯集合，包括规则、历史及开奖结果等。</li>
+                <li><strong>信息是否可靠？</strong> 所提供内容均来自公开渠道与整理，不包含虚假或误导数据。</li>
+                <li><strong>页面会频繁变动吗？</strong> 结构保持稳定，内容依据实际情况做渐进式更新。</li>
+                <li><strong>如何获得最新内容？</strong> 建议定期访问 <a href="https://macau6hbd.com" class="text-link">澳门六合</a> 查看更新。</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- 底部链接区 -->
+    <div>
+        <div class="footer-link-area">
+            <span>直接访问主要站点</span>
+            <a href="https://macau6hbd.com">澳门六合</a>
+        </div>
+        <div class="footnote">
+            本页为独立介绍页，内容仅供参考，不构成任何投资或参与建议。
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
